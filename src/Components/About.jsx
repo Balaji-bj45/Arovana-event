@@ -60,13 +60,25 @@ function About() {
         <div className="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-1 md:gap-4 flex-1">
           
           {/* Main Speaker Image */}
-          <div className="flex-shrink-0">
-            <img 
-              src={sathya} 
-              alt="Mr. Sathya Pradha Sahoo" 
-              className="w-40 sm:w-48 lg:w-56 h-auto object-cover grayscale border-2 border-transparent shadow-xl rounded-sm"
-            />
-          </div>
+         <div className="flex-shrink-0 relative w-40 sm:w-48 lg:w-56">
+  
+  {/* Image */}
+  <img 
+    src={sathya} 
+    alt="Tmt. Archana Patnaik, IAS" 
+    className="w-full h-auto "
+  />
+
+  {/* Overlay */}
+  <div className="absolute inset-0 flex items-center justify-center bg-black/50 backdrop-blur-xl p-2 rounded-sm">
+    <span className="text-white text-center font-bold uppercase tracking-widest text-[10px] sm:text-xs leading-tight">
+      Probably <br/>
+      To Be <br/>
+      Confirmed
+    </span>
+  </div>
+
+</div>
 
           {/* Main Speaker Text Details */}
           <div className="flex flex-col justify-center space-y-2 lg:space-y-3 mt-2 sm:mt-8">

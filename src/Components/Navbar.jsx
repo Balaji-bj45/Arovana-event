@@ -1,23 +1,30 @@
-import React, { useState } from 'react';
-import { FaFacebookF, FaTwitter, FaYoutube, FaInstagram, FaWhatsapp, FaChevronDown, FaBars, FaTimes } from 'react-icons/fa';
-import logo from '../assets/arovanalogo1.jpg';
+import React, { useState } from "react";
+import {
+  FaBars,
+  FaFacebookF,
+  FaInstagram,
+  FaTimes,
+  FaTwitter,
+  FaWhatsapp,
+  FaYoutube,
+} from "react-icons/fa";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
+import logo from "../assets/arovanalogo1.jpg";
 
 function Navbar() {
-
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const navLinks = [
-    { name: "HOME", targetId: "home", hasDropdown: false },
-    { name: "ABOUT", targetId: "about", hasDropdown: false },
-    { name: "DEBATE", targetId: "debate", hasDropdown: false },
-    { name: "CONCLAVE", targetId: "conclave", hasDropdown: false },
-    { name: "MEDIA", targetId: "media", hasDropdown: false },
+    { name: "HOME", targetId: "home" },
+    { name: "ABOUT", targetId: "about" },
+    { name: "DEBATE", targetId: "debate" },
+    { name: "CONCLAVE", targetId: "conclave" },
+    { name: "MEDIA", targetId: "media" },
   ];
 
-  const handleSmoothScroll = (e, targetId) => {
-    e.preventDefault();
-    setIsMobileMenuOpen(false);
-
+  const scrollToSection = (targetId) => {
     if (targetId === "home") {
       window.scrollTo({ top: 0, behavior: "smooth" });
       return;
@@ -26,40 +33,55 @@ function Navbar() {
     const targetElement = document.getElementById(targetId);
 
     if (targetElement) {
-      const navbarHeight = document.querySelector('nav').offsetHeight;
+      const navbar = document.querySelector("nav");
+      const navbarHeight = navbar ? navbar.offsetHeight : 0;
       const elementPosition = targetElement.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - navbarHeight;
 
       window.scrollTo({
         top: offsetPosition,
-        behavior: "smooth"
+        behavior: "smooth",
       });
     }
   };
 
+  const handleSectionNavigation = (targetId) => {
+    setIsMobileMenuOpen(false);
+
+    if (location.pathname !== "/") {
+      navigate("/", { state: { scrollTarget: targetId } });
+      return;
+    }
+
+    scrollToSection(targetId);
+  };
+
+  const handleRouteNavigation = (path) => {
+    setIsMobileMenuOpen(false);
+    navigate(path);
+  };
+
   return (
-    <nav className="w-full bg-white shadow-sm font-sans sticky top-0 z-50">
+    <nav className="sticky top-0 z-50 w-full bg-white font-sans shadow-sm">
 
-      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8">
 
-        <div className="flex justify-between items-center py-2">
+        <div className="flex items-center justify-between py-2">
 
-          {/* LOGO */}
-          <div
+          <button
+            type="button"
             className="flex-shrink-0 cursor-pointer"
-            onClick={(e) => handleSmoothScroll(e, "home")}
+            onClick={() => handleSectionNavigation("home")}
           >
             <img
               src={logo}
               alt="Arovana"
               className="h-20 w-auto object-contain"
             />
-          </div>
+          </button>
 
-          {/* DESKTOP */}
-          <div className="hidden lg:flex flex-col items-end space-y-3">
+          <div className="hidden flex-col items-end space-y-3 lg:flex">
 
-            {/* SOCIAL */}
             <div className="flex items-center space-x-20">
 
               <div className="flex items-center space-x-10 text-[#0B132B]">
@@ -88,13 +110,19 @@ function Navbar() {
 
               <div className="flex items-center space-x-3">
 
-                <button className="bg-[#D31A50] hover:bg-[#b01241] text-white text-xs font-bold py-1.5 px-5 transition uppercase">
+                <a
+                  href="https://forms.gle/v84RiEvnU5xZrAcy6"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-[#D31A50] px-5 py-1.5 text-xs font-bold uppercase text-white transition hover:bg-[#b01241]"
+                >
                   Join Us
-                </button>
+                </a>
 
                 <button
-                  onClick={(e) => handleSmoothScroll(e, "contact")}
-                  className="bg-[#0B132B] hover:bg-black text-white text-xs font-bold py-1.5 px-4 transition uppercase"
+                  type="button"
+                  onClick={() => handleRouteNavigation("/contact")}
+                  className="bg-[#0B132B] px-4 py-1.5 text-xs font-bold uppercase text-white transition hover:bg-black"
                 >
                   Contact Us
                 </button>
@@ -103,38 +131,43 @@ function Navbar() {
 
             </div>
 
-            {/* NAV LINKS */}
             <div className="flex items-center pt-2 pe-30">
 
               {navLinks.map((link, index) => (
-
                 <div key={link.name} className="flex items-center">
-
-                  <a
-                    href={`#${link.targetId}`}
-                    onClick={(e) => handleSmoothScroll(e, link.targetId)}
-                    className="text-[#2c3e50] text-[15px] font-bold hover:text-[#D31A50] transition flex items-center gap-1 uppercase"
+                  <button
+                    type="button"
+                    onClick={() => handleSectionNavigation(link.targetId)}
+                    className="flex items-center gap-1 text-[15px] font-bold uppercase text-[#2c3e50] transition hover:text-[#D31A50]"
                   >
                     {link.name}
-                    {link.hasDropdown && <FaChevronDown size={10} />}
-                  </a>
+                  </button>
 
                   {index !== navLinks.length - 1 && (
                     <span className="mx-3 text-gray-500">|</span>
                   )}
-
                 </div>
-
               ))}
+              <span className="mx-3 text-gray-500">|</span>
+              <NavLink
+                to="/contact"
+                className={({ isActive }) =>
+                  `text-[15px] font-bold uppercase transition ${
+                    isActive ? "text-[#D31A50]" : "text-[#2c3e50] hover:text-[#D31A50]"
+                  }`
+                }
+              >
+                Contact
+              </NavLink>
 
             </div>
 
           </div>
 
-          {/* MOBILE MENU BUTTON */}
-          <div className="lg:hidden flex items-center">
+          <div className="flex items-center lg:hidden">
 
             <button
+              type="button"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="text-[#0B132B]"
             >
@@ -150,23 +183,30 @@ function Navbar() {
       {/* MOBILE MENU */}
 
       {isMobileMenuOpen && (
-
-        <div className="lg:hidden bg-white border-t border-gray-100 pb-4 shadow-lg absolute w-full left-0">
-
-          <div className="flex flex-col px-4 pt-2 space-y-1">
-
+        <div className="absolute left-0 w-full border-t border-gray-100 bg-white pb-4 shadow-lg lg:hidden">
+          <div className="flex flex-col space-y-1 px-4 pt-2">
             {navLinks.map((link) => (
-
-              <a
+              <button
                 key={link.name}
-                href={`#${link.targetId}`}
-                onClick={(e) => handleSmoothScroll(e, link.targetId)}
-                className="block px-3 py-2 text-base font-semibold text-gray-700 hover:text-[#D31A50] hover:bg-gray-50 uppercase"
+                type="button"
+                onClick={() => handleSectionNavigation(link.targetId)}
+                className="block px-3 py-2 text-left text-base font-semibold uppercase text-gray-700 hover:bg-gray-50 hover:text-[#D31A50]"
               >
                 {link.name}
-              </a>
-
+              </button>
             ))}
+
+            <NavLink
+              to="/contact"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className={({ isActive }) =>
+                `block px-3 py-2 text-base font-semibold uppercase transition ${
+                  isActive ? "text-[#D31A50]" : "text-gray-700 hover:bg-gray-50 hover:text-[#D31A50]"
+                }`
+              }
+            >
+              Contact
+            </NavLink>
 
             <div className="flex justify-center space-x-8 py-4 text-[#0B132B]">
 
@@ -191,13 +231,9 @@ function Navbar() {
               </a>
 
             </div>
-
           </div>
-
         </div>
-
       )}
-
     </nav>
   );
 }

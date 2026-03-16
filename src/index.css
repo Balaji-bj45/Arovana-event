@@ -4,3 +4,52 @@
   --font-sans: 'Myriad Pro', 'MyriadPro-Regular', 'Segoe UI', Arial, sans-serif;
 }
 
+body {
+  font-family: var(--font-sans);
+}
+
+@keyframes popup-backdrop-enter {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes popup-card-enter {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.94);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes popup-orb-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform: translate3d(0, -12px, 0);
+  }
+}
+
+.popup-backdrop {
+  animation: popup-backdrop-enter 0.28s ease-out both;
+}
+
+.popup-card {
+  animation: popup-card-enter 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.popup-orb {
+  animation: popup-orb-float 6s ease-in-out infinite;
+}
+
