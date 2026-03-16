@@ -1,0 +1,6 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Myriad Pro', 'MyriadPro-Regular', 'Segoe UI', Arial, sans-serif;
+}
+
