@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useLayoutEffect } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 import EventRegisterPopup from "./Components/EventRegisterPopup";
 import Navbar from "./Components/Navbar";
@@ -7,6 +7,14 @@ import HomePage from "./Pages/HomePage";
 
 function App() {
   const location = useLocation();
+
+  useLayoutEffect(() => {
+    if (location.state?.scrollTarget) {
+      return;
+    }
+
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+  }, [location.pathname, location.state]);
 
   return (
     <>

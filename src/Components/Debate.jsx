@@ -53,8 +53,8 @@ function Event() {
 
         {/* Description Text (kept exact spelling from the poster) */}
         <p className="text-[#D81B38] text-base md:text-lg lg:text-xl max-w-4xl mx-auto leading-snug font-medium">
-          Political Leaders with huge followers from different Ideoogies, all on the same stage<br className="hidden md:block" />
-          to put their best ideoogy forward for people's mandate..
+          Political Leaders with huge followers from different Ideologies, all on the same stage<br className="hidden md:block" />
+          to put their best ideology forward for people's mandate..
         </p>
       </div>
 

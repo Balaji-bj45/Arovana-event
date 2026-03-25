@@ -138,7 +138,7 @@ tracking-wide font-light gap-1 sm:gap-2 md:gap-3 text-center"
                     {/* Overlay - Extreme Backdrop Blur + Fixed Text Formatting */}
                     <div className="absolute inset-0 z-10 flex items-center justify-center bg-black/50 backdrop-blur-xl p-1 sm:p-2">
                       <span className="text-white text-center leading-tight sm:leading-snug text-[9px] min-[400px]:text-[11px] sm:text-[12px] md:text-[14px] font-bold uppercase tracking-wide sm:tracking-widest drop-shadow-md w-full px-1">
-                        Probably <br /> 
+                        Probable <br /> 
                         To Be <br /> 
                         Confirmed
                       </span>

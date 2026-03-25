@@ -8,6 +8,7 @@ import {
 
 const FORM_LINK = "https://forms.gle/v84RiEvnU5xZrAcy6";
 const STORAGE_KEY = "arovana-event-popup-dismissed";
+const OPEN_DELAY_MS = 3000;
 
 function EventRegisterPopup() {
   const [isOpen, setIsOpen] = useState(false);
@@ -24,7 +25,7 @@ function EventRegisterPopup() {
 
     const timer = window.setTimeout(() => {
       setIsOpen(true);
-    }, 450);
+    }, OPEN_DELAY_MS);
 
     return () => window.clearTimeout(timer);
   }, []);
@@ -88,14 +89,14 @@ function EventRegisterPopup() {
 
           <div className="space-y-4">
             <p className="text-sm font-medium uppercase tracking-[0.35em] text-white/60">
-              Arovana Event 2026
+              Grand Stage. Greater Voices
             </p>
 
             <h2
               id="register-popup-title"
-              className="max-w-lg text-3xl font-black uppercase leading-tight sm:text-4xl"
+              className="max-w-lg text-xl font-black uppercase leading-tight sm:text-xl "
             >
-              Join the conversation at Democracy Festival
+              Join the conversation at Maanbumigu Vetpaalar Democracy Festival 2026
             </h2>
 
             <p className="max-w-lg text-sm leading-6 text-white/75 sm:text-base">
@@ -114,7 +115,7 @@ function EventRegisterPopup() {
                 </span>
               </div>
               <p className="text-base font-semibold text-white">
-                22 March 2026
+                11th April 2026
               </p>
               <p className="text-white/70">3:00 PM onwards</p>
             </div>
@@ -127,9 +128,11 @@ function EventRegisterPopup() {
                 </span>
               </div>
               <p className="text-base font-semibold text-white">
-                Iyyan Valluvar Arangam
+               Grand Imperial (Ground floor)
               </p>
-              <p className="text-white/70">Valluvar Kottam, Chennai</p>
+              <p className="text-white/70">Great Ceremonies, Grt convention centre</p>
+              <p className="text-white/70"> 41, Giriyappa Rd, Drivers Colony,</p>
+              <p className="text-white/70"> T. Nagar, Chennai, Tamil Nadu 600017</p>
             </div>
           </div>
 

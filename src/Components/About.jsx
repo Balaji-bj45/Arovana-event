@@ -19,7 +19,7 @@ function About() {
   </h2>
 
   <p>
-    "Maanbumigu Vetpaalar" Event is an initiative by <span className="font-bold">AROVANA POLITICAL ACTIVITY SUPPORT SYSTEM (AIPASS)</span>, an <span className="font-bold">AROVANA GROUP COMPANY</span>.
+    "Maanbumigu Vetpaalar" Event is an initiative by <span className="font-bold">AROVANA INDIAN POLITICAL ACTIVITY SUPPORT SYSTEM (AIPASS)</span>, an <span className="font-bold">AROVANA GROUP COMPANY</span>.
   </p>
 
   <p>
@@ -72,7 +72,7 @@ function About() {
   {/* Overlay */}
   <div className="absolute inset-0 flex items-center justify-center bg-black/50 backdrop-blur-xl p-2 rounded-sm">
     <span className="text-white text-center font-bold uppercase tracking-widest text-[10px] sm:text-xs leading-tight">
-      Probably <br/>
+      Probable <br/>
       To Be <br/>
       Confirmed
     </span>
@@ -88,13 +88,13 @@ function About() {
               <span className="block sm:inline mt-1 sm:mt-0">Inauguration by</span>
             </p>
 
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-[2.2rem] font-black tracking-tight leading-tight">
-              Tmt. Archana Patnaik, IAS
-            </h1>
+           <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-[2.2rem] font-black tracking-tight leading-tight">
+  Chief Guest
+</h1>
 
-            <p className="text-base sm:text-lg md:text-lg font-medium text-white/90 leading-snug max-w-xl">
-              Chief Electoral Officer (CEO) Secretary, <span className='whitespace-nowrap'> Tamil Nadu.</span> 
-            </p> 
+<p className="text-base sm:text-lg md:text-lg font-medium text-white/90 leading-snug max-w-xl">
+  To Be Announced soon
+</p> 
 
             <p className="text-[#fff200] text-lg sm:text-xl md:text-xl font-bold tracking-wide mt-1 leading-snug">
               SPEECH ON 100% VOTING IN DEMOCRACY
